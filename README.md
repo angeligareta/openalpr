@@ -10,9 +10,18 @@ First of all, we would need to install Docker and create the container.
 ```
 docker build -t atecresa_parking https://github.com/angeligareta/openalpr.git
 ```
-After that, we need to download the folders config and runtime_data from this repository. Lastly we execute the docker in the folder where we downloaded the configuration files.
+After that, we need to **download the folders config and runtime_data from this repository**.
+
+Lastly we execute the docker in the folder where we downloaded the configuration files.
+
+Linux
 ```
-docker run -p 8080:8080 -it –rm -v $(pwd):/data:ro atecresa_parking -a ‘http://192.168.0.90/mjpg/video.mjpg’ -p 8080
+docker run -p 1234:1234 -it –-rm -v $(pwd):/data:ro atecresa_parking -a ‘http://192.168.0.90/mjpg/video.mjpg’ -p 1234
+```
+
+Windows
+```
+docker run -p 1234:1234 -it --rm -v "%cd%":/data:ro atecresa_parking -a ‘http://192.168.0.90/mjpg/video.mjpg’ -p 1234 
 ```
 
 Finally the program will start and listen to the port 8080, waiting for a message 'Z' to take a picture and send the detected label.
